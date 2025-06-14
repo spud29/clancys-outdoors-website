@@ -12,7 +12,7 @@ datasource db {
 // Product Management
 model Product {
   id               String   @id @default(cuid())
-  sku              String   @unique
+  sku              String?  @unique
   name             String
   description      String
   shortDescription String?

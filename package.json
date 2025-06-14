@@ -17,6 +17,7 @@
     "import-clancys": "tsx scripts/import-clancys-data.ts",
     "import-clancys:validate": "tsx scripts/import-clancys-data.ts --validate-only",
     "import-clancys:dry-run": "tsx scripts/import-clancys-data.ts --dry-run",
+    "import-clancys:full": "tsx scripts/full-import.ts",
     "setup-database": "tsx scripts/setup-database.ts"
   },
   "dependencies": {
