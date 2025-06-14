@@ -18,7 +18,8 @@
     "import-clancys:validate": "tsx scripts/import-clancys-data.ts --validate-only",
     "import-clancys:dry-run": "tsx scripts/import-clancys-data.ts --dry-run",
     "import-clancys:full": "tsx scripts/full-import.ts",
-    "setup-database": "tsx scripts/setup-database.ts"
+    "setup-database": "tsx scripts/setup-database.ts",
+    "fix-images": "tsx scripts/fix-image-urls.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.0",
