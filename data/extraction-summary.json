@@ -1,0 +1,178 @@
+{
+  "extractionDate": "2025-06-14T16:48:21.621Z",
+  "totals": {
+    "products": 741,
+    "categories": 108,
+    "errors": 0
+  },
+  "productStats": {
+    "withImages": 741,
+    "onSale": 274,
+    "inStock": 741,
+    "averagePrice": 131,
+    "priceRange": "$1.99 - $949.99"
+  },
+  "topCategories": [
+    {
+      "name": "12 Volt Accessories",
+      "products": 12
+    },
+    {
+      "name": "12 Volt Lighting",
+      "products": 12
+    },
+    {
+      "name": "Augers",
+      "products": 12
+    },
+    {
+      "name": "Batteries",
+      "products": 12
+    },
+    {
+      "name": "Bunk &amp; Table Hardware",
+      "products": 12
+    },
+    {
+      "name": "Catch Cover Hole Covers and Sleeves",
+      "products": 12
+    },
+    {
+      "name": "Catch Cover Products",
+      "products": 12
+    },
+    {
+      "name": "Clam Products",
+      "products": 12
+    },
+    {
+      "name": "Clancy's Products",
+      "products": 12
+    },
+    {
+      "name": "Electric, Gas, Propane, and Hand Ice Augers | Monticello, MN",
+      "products": 12
+    },
+    {
+      "name": "Electronics",
+      "products": 12
+    },
+    {
+      "name": "Eskimo",
+      "products": 12
+    },
+    {
+      "name": "Fish Finder Locators",
+      "products": 12
+    },
+    {
+      "name": "Nu-Way Propane and Woods Stoves | Monticello, MN",
+      "products": 12
+    },
+    {
+      "name": "Fish House / Deer Stand Stoves Nu-Way Nuway",
+      "products": 12
+    }
+  ],
+  "sampleProducts": [
+    {
+      "name": "Amish Ice Fishing Spear – Round Head – 7 Tines",
+      "price": "$189.99",
+      "categories": [
+        "Fish Spearing Products",
+        "Ice Fishing Spears",
+        " "
+      ],
+      "images": 2
+    },
+    {
+      "name": "Amish Stainless Steel Fishing Spear 7-tine",
+      "price": "$239.99",
+      "categories": [
+        "Fish Spearing Products",
+        "Ice Fishing Spears",
+        " "
+      ],
+      "images": 2
+    },
+    {
+      "name": "Amish Custom Made Wood Handled Stainless Steel Spear",
+      "price": "$319.99",
+      "categories": [
+        "Fish Spearing Products",
+        "Ice Fishing Spears",
+        " "
+      ],
+      "images": 2
+    },
+    {
+      "name": "Amish Made Stainless Steel Fishing Spear 9-tine",
+      "price": "$299.99",
+      "categories": [
+        "Fish Spearing Products",
+        "Ice Fishing Spears",
+        " "
+      ],
+      "images": 2
+    },
+    {
+      "name": "Amish Made Flat Head 7-Tine Fishing Spear",
+      "price": "$149.99",
+      "categories": [
+        "Fish Spearing Products",
+        "Ice Fishing Spears",
+        " "
+      ],
+      "images": 2
+    },
+    {
+      "name": "Amish Made Ice Fishing Spear – Rounded Head – 9 Tines",
+      "price": "$229.99",
+      "categories": [
+        "Fish Spearing Products",
+        "Ice Fishing Spears",
+        " "
+      ],
+      "images": 2
+    },
+    {
+      "name": "Fishing Magnet, 300 lb Pull Strength",
+      "price": "$29.99 (Sale: $21.99)",
+      "categories": [
+        "Ice Chisels",
+        "Ice Fishing Products",
+        "Ice Fishing Spears"
+      ],
+      "images": 2
+    },
+    {
+      "name": "Lakco Sturgeon or Carp 7 Tine Spear 630S",
+      "price": "$99.99",
+      "categories": [
+        "Fish Spearing Products",
+        "Ice Fishing Spears",
+        " "
+      ],
+      "images": 2
+    },
+    {
+      "name": "Clancy’s Original PowerBox",
+      "price": "$169.99 (Sale: $114.99)",
+      "categories": [
+        "12 Volt Accessories",
+        "Clancys Products",
+        "Electronics"
+      ],
+      "images": 2
+    },
+    {
+      "name": "Directional Hole Light/ Reading Light",
+      "price": "$19.99 (Sale: $14.99)",
+      "categories": [
+        "12 Volt Accessories",
+        "12 Volt Lighting"
+      ],
+      "images": 1
+    }
+  ]
+}

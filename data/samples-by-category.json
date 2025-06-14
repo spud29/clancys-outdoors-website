@@ -1,0 +1,771 @@
+{
+  "12 Volt Accessories": [
+    {
+      "name": "Clancy’s Original PowerBox",
+      "price": {
+        "regular": 169.99,
+        "sale": 114.99,
+        "currency": "USD"
+      },
+      "slug": "clancys-powerbox",
+      "images": 2,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "Directional Hole Light/ Reading Light",
+      "price": {
+        "regular": 19.99,
+        "sale": 14.99,
+        "currency": "USD"
+      },
+      "slug": "1146-2",
+      "images": 1,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "Clancy’s PowerBox 12-volt power supply USB Cigarette Plug Jig Glow Cup",
+      "price": {
+        "regular": 199.99,
+        "sale": 159.99,
+        "currency": "USD"
+      },
+      "slug": "clancys-powerbox-12-volt-power-supply-usb-cigarette-plug-jig-glow-cup",
+      "images": 2,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "LineAlarm Line Alarm",
+      "price": {
+        "regular": 150,
+        "sale": 26.5,
+        "currency": "USD"
+      },
+      "slug": "linealarm",
+      "images": 2,
+      "inStock": true,
+      "isOnSale": true
+    },
+    {
+      "name": "LED Dome Light Fixture",
+      "price": {
+        "regular": 29.99,
+        "sale": 17.49,
+        "currency": "USD"
+      },
+      "slug": "dual-led-dome-light-fixture",
+      "images": 2,
+      "inStock": true,
+      "isOnSale": false
+    }
+  ],
+  "12 Volt Lighting": [
+    {
+      "name": "Directional Hole Light/ Reading Light",
+      "price": {
+        "regular": 19.99,
+        "sale": 14.99,
+        "currency": "USD"
+      },
+      "slug": "1146-2",
+      "images": 1,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "LED Dome Light Fixture",
+      "price": {
+        "regular": 29.99,
+        "sale": 17.49,
+        "currency": "USD"
+      },
+      "slug": "dual-led-dome-light-fixture",
+      "images": 2,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "12 Volt Wall Switch",
+      "price": {
+        "regular": 7.5,
+        "currency": "USD"
+      },
+      "slug": "12-volt-wall-switch",
+      "images": 1,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "16 GAUGE 100 FT RED BLACK WIRE AWG",
+      "price": {
+        "regular": 37.99,
+        "currency": "USD"
+      },
+      "slug": "16-gauge-100-ft-red-black-wire-awg",
+      "images": 2,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "Directional Hole Light/ Reading Light",
+      "price": {
+        "regular": 19.99,
+        "sale": 14.99,
+        "currency": "USD"
+      },
+      "slug": "1146-2",
+      "images": 1,
+      "inStock": true,
+      "isOnSale": false
+    }
+  ],
+  "Augers": [
+    {
+      "name": "K Drill 6.0, 7.5 or 8.5 inch KDrill",
+      "price": {
+        "regular": 249.99,
+        "sale": 189.99,
+        "currency": "USD"
+      },
+      "slug": "k-drill-6-or-8-inch-kdrill",
+      "images": 2,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "Strikemaster 12 or 20 inch Power Auger Extension",
+      "price": {
+        "regular": 34.99,
+        "currency": "USD"
+      },
+      "slug": "strikemaster-12-inch-power-auger-extension",
+      "images": 1,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "Strikemaster Lite-Flite Lazer Drill Unit LFLD-6; LFLD-8",
+      "price": {
+        "regular": 219.99,
+        "sale": 199.99,
+        "currency": "USD"
+      },
+      "slug": "strikemaster-lite-flite-lazer-drill-unit",
+      "images": 2,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "ESKIMO ICE FISHING GEAR PISTOL BIT 8” or 6″",
+      "price": {
+        "regular": 219.99,
+        "sale": 189.99,
+        "currency": "USD"
+      },
+      "slug": "eskimo-ice-fishing-gear-pistol-bit-8-35600",
+      "images": 2,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "StrikeMaster Lithium Auger 6″ LTVLF-6; Auger 8″ LTVLF-8",
+      "price": {
+        "regular": 459.99,
+        "sale": 439.99,
+        "currency": "USD"
+      },
+      "slug": "8663",
+      "images": 2,
+      "inStock": true,
+      "isOnSale": false
+    }
+  ],
+  "Batteries": [
+    {
+      "name": "12V 15 AH Sealed Lead Acid (SLA) Battery – T2 Terminals",
+      "price": {
+        "regular": 69.99,
+        "currency": "USD"
+      },
+      "slug": "12v-15-6ah-sealed-lead-acid-sla-battery-t2-terminals",
+      "images": 2,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "12 Volt Battery and Charger",
+      "price": {
+        "regular": 39.99,
+        "currency": "USD"
+      },
+      "slug": "battery-and-charger",
+      "images": 2,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "41282A ION Battery",
+      "price": {
+        "regular": 259.99,
+        "currency": "USD"
+      },
+      "slug": "41282a-ion-battery",
+      "images": 2,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "12 Volt Battery",
+      "price": {
+        "regular": 29.99,
+        "currency": "USD"
+      },
+      "slug": "12-volt-battery",
+      "images": 1,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "Norsk 15Ah 12.6v Lithium Ion Battery 20-020",
+      "price": {
+        "regular": 129.99,
+        "currency": "USD"
+      },
+      "slug": "norsk-15ah-12-6v-lithium-ion-battery-20-020",
+      "images": 1,
+      "inStock": true,
+      "isOnSale": false
+    }
+  ],
+  "Catch Cover Products": [
+    {
+      "name": "Portable DC 12V Ceiling Fan With/Without Switch for Fish House, RV or for Outdoor Camping",
+      "price": {
+        "regular": 23.99,
+        "currency": "USD"
+      },
+      "slug": "12-volt-fan",
+      "images": 2,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "Catch Cover Wall Lid Bracket – CC10",
+      "price": {
+        "regular": 21.99,
+        "sale": 19.99,
+        "currency": "USD"
+      },
+      "slug": "680-2",
+      "images": 2,
+      "inStock": true,
+      "isOnSale": true
+    },
+    {
+      "name": "Katz Koverz Clear Step Cover",
+      "price": {
+        "regular": 140,
+        "sale": 18.5,
+        "currency": "USD"
+      },
+      "slug": "katz-kover-clear-step-cover",
+      "images": 1,
+      "inStock": true,
+      "isOnSale": true
+    },
+    {
+      "name": "Catch Cover Sleeves – 9 Inch Black, White – CC04",
+      "price": {
+        "regular": 140,
+        "sale": 18.5,
+        "currency": "USD"
+      },
+      "slug": "catch-cover-hole-sleeve-9-inch",
+      "images": 2,
+      "inStock": true,
+      "isOnSale": true
+    },
+    {
+      "name": "Catch Cover Ice Hole Cover – Round – CC01",
+      "price": {
+        "regular": 164,
+        "sale": 21.5,
+        "currency": "USD"
+      },
+      "slug": "round-catch-cover-ice-hole-cover",
+      "images": 1,
+      "inStock": true,
+      "isOnSale": true
+    }
+  ],
+  "Clam Products": [
+    {
+      "name": "Clam Edge Auger 12″ or 20″ Extension (Fits Clam Eskimo or Strikemaster Augers)",
+      "price": {
+        "regular": 27.99,
+        "currency": "USD"
+      },
+      "slug": "clam-edge-auger-12-extension",
+      "images": 1,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "Clancy’s Spinner Battery Operated Decoy Spinner",
+      "price": {
+        "regular": 17.99,
+        "currency": "USD"
+      },
+      "slug": "clancys-battery-operated-spinner",
+      "images": 2,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "Clancy’s Spinner Battery Operated Decoy Spinner",
+      "price": {
+        "regular": 17.99,
+        "currency": "USD"
+      },
+      "slug": "clancys-battery-operated-spinner",
+      "images": 2,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "Clancy’s Spinner Battery Operated Decoy Spinner",
+      "price": {
+        "regular": 17.99,
+        "currency": "USD"
+      },
+      "slug": "clancys-battery-operated-spinner",
+      "images": 2,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "Custom DNR License Sign for Fish House",
+      "price": {
+        "regular": 79,
+        "sale": 65,
+        "currency": "USD"
+      },
+      "slug": "custom-dnr-license-sign-for-fish-house",
+      "images": 2,
+      "inStock": true,
+      "isOnSale": true
+    }
+  ],
+  "Electronics": [
+    {
+      "name": "Clancy’s Original PowerBox",
+      "price": {
+        "regular": 169.99,
+        "sale": 114.99,
+        "currency": "USD"
+      },
+      "slug": "clancys-powerbox",
+      "images": 2,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "Clancy’s PowerBox 12-volt power supply USB Cigarette Plug Jig Glow Cup",
+      "price": {
+        "regular": 199.99,
+        "sale": 159.99,
+        "currency": "USD"
+      },
+      "slug": "clancys-powerbox-12-volt-power-supply-usb-cigarette-plug-jig-glow-cup",
+      "images": 2,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "LineAlarm Line Alarm",
+      "price": {
+        "regular": 150,
+        "sale": 26.5,
+        "currency": "USD"
+      },
+      "slug": "linealarm",
+      "images": 2,
+      "inStock": true,
+      "isOnSale": true
+    },
+    {
+      "name": "Clancy’s PowerBox 12-volt power supply USB Cigarette Plug Jig Glow Cup Ring Terminals",
+      "price": {
+        "regular": 214.99,
+        "sale": 169.99,
+        "currency": "USD"
+      },
+      "slug": "clancys-powerbox-12-volt-power-supply-usb-cigarette-plug-jig-glow-cup-ring-terminals",
+      "images": 2,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "12 Volt Waterproof Solar Sealed Lead Acid Battery Charger",
+      "price": {
+        "regular": 39.99,
+        "currency": "USD"
+      },
+      "slug": "12-volt-waterproof-solar-sealed-lead-acid-battery-charger",
+      "images": 2,
+      "inStock": true,
+      "isOnSale": false
+    }
+  ],
+  "Eskimo": [
+    {
+      "name": "ESKIMO ICE FISHING GEAR PISTOL BIT 8” or 6″",
+      "price": {
+        "regular": 219.99,
+        "sale": 189.99,
+        "currency": "USD"
+      },
+      "slug": "eskimo-ice-fishing-gear-pistol-bit-8-35600",
+      "images": 2,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "Clam Edge Auger 12″ or 20″ Extension (Fits Clam Eskimo or Strikemaster Augers)",
+      "price": {
+        "regular": 27.99,
+        "currency": "USD"
+      },
+      "slug": "clam-edge-auger-12-extension",
+      "images": 1,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "Eskimo Stingray 33cc 2-Cycle Viper® Engine Ice Auger",
+      "price": {
+        "regular": 339.99,
+        "currency": "USD"
+      },
+      "slug": "eskimo-stingray-8-inch-gas-powered-auger-as33q8",
+      "images": 2,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "Clam Edge Auger 12″ or 20″ Extension (Fits Clam Eskimo or Strikemaster Augers)",
+      "price": {
+        "regular": 27.99,
+        "currency": "USD"
+      },
+      "slug": "clam-edge-auger-12-extension",
+      "images": 1,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "Eskimo Sweatshirt Hoodie",
+      "price": {
+        "regular": 59.99,
+        "currency": "USD"
+      },
+      "slug": "eskimo-sweatshirt-hoodie",
+      "images": 1,
+      "inStock": true,
+      "isOnSale": false
+    }
+  ],
+  "Fish Finder Locators": [
+    {
+      "name": "GARMIN LIVESCOPE PLUS ICE FISHING BUNDLE LI ION 010-02342-65",
+      "price": {
+        "regular": 3,
+        "currency": "USD"
+      },
+      "slug": "garmin-livescope-plus-ice-fishing-bundle-li-ion-010-02342-65",
+      "images": 2,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "DC Cord with Alligator Clips by Clam",
+      "price": {
+        "regular": 7.99,
+        "currency": "USD"
+      },
+      "slug": "clam-dc-cord-with-alligator-clips",
+      "images": 1,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "MarCum® LX-7L Lithium Ice Fishing Sonar System/Fish Finder",
+      "price": {
+        "regular": 799.99,
+        "currency": "USD"
+      },
+      "slug": "marcum-lx-7-ice-fishing-sonar-systemfishfinder",
+      "images": 2,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "DC Cord with Alligator Clips by Clam",
+      "price": {
+        "regular": 7.99,
+        "currency": "USD"
+      },
+      "slug": "clam-dc-cord-with-alligator-clips",
+      "images": 1,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "Vexilar FL-8SE Genz Pack with 19 Degree Ice Ducer Flasher Sonar",
+      "price": {
+        "regular": 329.99,
+        "currency": "USD"
+      },
+      "slug": "vexilar-fl-8se-genz-pack-with-19-degree-ice-ducer-flasher-sonar",
+      "images": 1,
+      "inStock": true,
+      "isOnSale": false
+    }
+  ],
+  "Fish Spearing Decoys": [
+    {
+      "name": "NCH-HH Hammer Handle Line Jigger",
+      "price": {
+        "regular": 19.99,
+        "currency": "USD"
+      },
+      "slug": "hammer-handle-line-jigger",
+      "images": 2,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "Bear Creek Decoys",
+      "price": {
+        "regular": 26.99,
+        "currency": "USD"
+      },
+      "slug": "bear-creek-decoys",
+      "images": 2,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "Clancy’s Spinner Battery Operated Decoy Spinner",
+      "price": {
+        "regular": 17.99,
+        "currency": "USD"
+      },
+      "slug": "clancys-battery-operated-spinner",
+      "images": 2,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "NCH-HH Hammer Handle Line Jigger",
+      "price": {
+        "regular": 19.99,
+        "currency": "USD"
+      },
+      "slug": "hammer-handle-line-jigger",
+      "images": 2,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "Clancy’s Spinner Battery Operated Decoy Spinner",
+      "price": {
+        "regular": 17.99,
+        "currency": "USD"
+      },
+      "slug": "clancys-battery-operated-spinner",
+      "images": 2,
+      "inStock": true,
+      "isOnSale": false
+    }
+  ],
+  "Fish Spearing Products": [
+    {
+      "name": "Amish Ice Fishing Spear – Round Head – 7 Tines",
+      "price": {
+        "regular": 189.99,
+        "currency": "USD"
+      },
+      "slug": "ice-fishing-spear",
+      "images": 2,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "Amish Stainless Steel Fishing Spear 7-tine",
+      "price": {
+        "regular": 239.99,
+        "currency": "USD"
+      },
+      "slug": "stainless-steel-fishing-spear",
+      "images": 2,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "Amish Custom Made Wood Handled Stainless Steel Spear",
+      "price": {
+        "regular": 319.99,
+        "currency": "USD"
+      },
+      "slug": "custom-wood-handled-stainless-steel-spear",
+      "images": 2,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "Amish Made Stainless Steel Fishing Spear 9-tine",
+      "price": {
+        "regular": 299.99,
+        "currency": "USD"
+      },
+      "slug": "amish-stainless-steel-fishing-spear-9-tine",
+      "images": 2,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "Amish Made Flat Head 7-Tine Fishing Spear",
+      "price": {
+        "regular": 149.99,
+        "currency": "USD"
+      },
+      "slug": "flat-tine-fishing-spear",
+      "images": 2,
+      "inStock": true,
+      "isOnSale": false
+    }
+  ],
+  "Fishing Line": [
+    {
+      "name": "Tip Up Line Markers",
+      "price": {
+        "regular": 3.99,
+        "sale": 3.49,
+        "currency": "USD"
+      },
+      "slug": "tip-up-line-markers",
+      "images": 1,
+      "inStock": true,
+      "isOnSale": true
+    },
+    {
+      "name": "Fly Line ends",
+      "price": {
+        "regular": 6.99,
+        "sale": 5.99,
+        "currency": "USD"
+      },
+      "slug": "fly-line-ends",
+      "images": 1,
+      "inStock": true,
+      "isOnSale": true
+    },
+    {
+      "name": "Vinyl Coated Tip Up Line",
+      "price": {
+        "regular": 8.99,
+        "sale": 6.99,
+        "currency": "USD"
+      },
+      "slug": "vinyl-coated-tip-up-line",
+      "images": 2,
+      "inStock": true,
+      "isOnSale": true
+    },
+    {
+      "name": "Nylon Tip Up Line",
+      "price": {
+        "regular": 8.99,
+        "sale": 5.99,
+        "currency": "USD"
+      },
+      "slug": "micro-coated-tip-line",
+      "images": 1,
+      "inStock": true,
+      "isOnSale": true
+    },
+    {
+      "name": "Tip Up Line Markers",
+      "price": {
+        "regular": 3.99,
+        "sale": 3.49,
+        "currency": "USD"
+      },
+      "slug": "tip-up-line-markers",
+      "images": 1,
+      "inStock": true,
+      "isOnSale": true
+    }
+  ],
+  "Humminbird": [
+    {
+      "name": "DC Cord with Alligator Clips by Clam",
+      "price": {
+        "regular": 7.99,
+        "currency": "USD"
+      },
+      "slug": "clam-dc-cord-with-alligator-clips",
+      "images": 1,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "DC Cord with Alligator Clips by Clam",
+      "price": {
+        "regular": 7.99,
+        "currency": "USD"
+      },
+      "slug": "clam-dc-cord-with-alligator-clips",
+      "images": 1,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "DC Cord with Alligator Clips by Clam",
+      "price": {
+        "regular": 7.99,
+        "currency": "USD"
+      },
+      "slug": "clam-dc-cord-with-alligator-clips",
+      "images": 1,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "Humminbird® ICE™ 55 Flasher",
+      "price": {
+        "regular": 569.99,
+        "currency": "USD"
+      },
+      "slug": "ice-55",
+      "images": 2,
+      "inStock": true,
+      "isOnSale": false
+    },
+    {
+      "name": "HUMMINBIRD ICE HELIX 7 CHIRP GPS G4 AS 411760-1",
+      "price": {
+        "regular": 899.99,
+        "sale": 1,
+        "currency": "USD"
+      },
+      "slug": "humminbird-helix-7-chirp-gps-g2-fish-locator",
+      "images": 1,
+      "inStock": true,
+      "isOnSale": true
+    }
+  ]
+}
