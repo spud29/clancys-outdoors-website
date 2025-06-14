@@ -6,98 +6,75 @@ import { Button } from '@/components/ui/Button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Search, Filter, Star, ShoppingCart } from 'lucide-react';
+import { prisma } from '@/lib/database';
 
-// Sample product data
-const sampleProducts = [
-  {
-    id: 1,
-    name: 'Eskimo QuickFlip 2 Ice Shelter',
-    price: 299.99,
-    originalPrice: 349.99,
-    rating: 4.8,
-    reviews: 127,
-    image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop',
-    category: 'Ice Shelters',
-    badge: 'Best Seller',
-    inStock: true
-  },
-  {
-    id: 2,
-    name: 'Humminbird Helix 5 Fish Finder',
-    price: 199.99,
-    originalPrice: null,
-    rating: 4.6,
-    reviews: 89,
-    image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=400&h=300&fit=crop',
-    category: 'Electronics',
-    badge: 'New',
-    inStock: true
-  },
-  {
-    id: 3,
-    name: 'St. Croix Legend Ice Rod',
-    price: 89.99,
-    originalPrice: 109.99,
-    rating: 4.9,
-    reviews: 203,
-    image: 'https://images.unsplash.com/photo-1498654896293-37aacf113fd9?w=400&h=300&fit=crop',
-    category: 'Rods & Reels',
-    badge: 'Sale',
-    inStock: true
-  },
-  {
-    id: 4,
-    name: 'Celsius Ice Fishing Gloves',
-    price: 24.99,
-    originalPrice: null,
-    rating: 4.4,
-    reviews: 56,
-    image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop',
-    category: 'Accessories',
-    badge: null,
-    inStock: true
-  },
-  {
-    id: 5,
-    name: 'Striker Ice Predator Jacket',
-    price: 179.99,
-    originalPrice: 219.99,
-    rating: 4.7,
-    reviews: 94,
-    image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop',
-    category: 'Apparel',
-    badge: 'Sale',
-    inStock: false
-  },
-  {
-    id: 6,
-    name: 'Vexilar FL-20 Flasher',
-    price: 329.99,
-    originalPrice: null,
-    rating: 4.8,
-    reviews: 156,
-    image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=400&h=300&fit=crop',
-    category: 'Electronics',
-    badge: 'Professional',
-    inStock: true
+// Get products from database
+async function getProducts() {
+  try {
+    const products = await prisma.product.findMany({
+      where: {
+        status: 'ACTIVE'
+      },
+      include: {
+        images: {
+          orderBy: { priority: 'asc' },
+          take: 1
+        },
+        categories: {
+          take: 1
+        }
+      },
+      orderBy: [
+        { createdAt: 'desc' }
+      ],
+      take: 24 // Show first 24 products
+    });
+    
+    return products;
+  } catch (error) {
+    console.error('Error fetching products:', error);
+    return [];
   }
-];
+}
 
-function ProductCard({ product }: { product: typeof sampleProducts[0] }) {
+// Get categories for filter
+async function getCategories() {
+  try {
+    const categories = await prisma.productCategory.findMany({
+      orderBy: { name: 'asc' }
+    });
+    return categories;
+  } catch (error) {
+    console.error('Error fetching categories:', error);
+    return [];
+  }
+}
+
+function ProductCard({ product }: { product: any }) {
+  const primaryImage = product.images?.[0];
+  const primaryCategory = product.categories?.[0];
+  const isOnSale = product.salePrice && product.salePrice.lt(product.regularPrice);
+  const displayPrice = product.salePrice || product.regularPrice;
+  
   return (
     <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg">
       <CardHeader className="p-0">
         <div className="relative h-48 overflow-hidden rounded-t-lg">
           <Image
-            src={product.image}
+            src={primaryImage?.url || 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop'}
             alt={product.name}
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-300"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
-          {product.badge && (
-            <Badge className="absolute top-4 left-4 bg-orange-600 text-white">
-              {product.badge}
+          {isOnSale && (
+            <Badge className="absolute top-4 left-4 bg-red-600 text-white">
+              Sale
+            </Badge>
+          )}
+          {product.featured && (
+            <Badge className="absolute top-4 right-4 bg-orange-600 text-white">
+              Featured
             </Badge>
           )}
           {!product.inStock && (
@@ -109,51 +86,49 @@ function ProductCard({ product }: { product: typeof sampleProducts[0] }) {
       </CardHeader>
       <CardContent className="p-6">
         <div className="mb-2">
-          <span className="text-sm text-gray-500">{product.category}</span>
+          <span className="text-sm text-gray-500">{primaryCategory?.name || 'Uncategorized'}</span>
         </div>
         <CardTitle className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
           {product.name}
         </CardTitle>
-        <div className="flex items-center mb-3">
-          <div className="flex items-center">
-            {[...Array(5)].map((_, i) => (
-              <Star
-                key={i}
-                className={`h-4 w-4 ${
-                  i < Math.floor(product.rating) ? 'text-yellow-400 fill-current' : 'text-gray-300'
-                }`}
-              />
-            ))}
-          </div>
-          <span className="ml-2 text-sm text-gray-600">
-            {product.rating} ({product.reviews} reviews)
-          </span>
-        </div>
         <div className="flex items-center gap-2 mb-4">
-          <span className="text-2xl font-bold text-gray-900">${product.price}</span>
-          {product.originalPrice && (
-            <span className="text-lg text-gray-500 line-through">${product.originalPrice}</span>
+          <span className="text-2xl font-bold text-gray-900">
+            ${displayPrice.toFixed(2)}
+          </span>
+          {isOnSale && (
+            <span className="text-lg text-gray-500 line-through">
+              ${product.regularPrice.toFixed(2)}
+            </span>
           )}
         </div>
       </CardContent>
       <CardFooter className="p-6 pt-0">
-        <Button 
-          className={`w-full ${
-            product.inStock 
-              ? 'bg-orange-600 hover:bg-orange-700 text-white' 
-              : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-          }`}
-          disabled={!product.inStock}
-        >
-          <ShoppingCart className="mr-2 h-4 w-4" />
-          {product.inStock ? 'Add to Cart' : 'Out of Stock'}
-        </Button>
+        <div className="flex gap-2 w-full">
+          <Link href={`/products/${product.slug}`} className="flex-1">
+            <Button variant="outline" className="w-full">
+              View Details
+            </Button>
+          </Link>
+          <Button 
+            className={`flex-1 ${
+              product.inStock 
+                ? 'bg-orange-600 hover:bg-orange-700 text-white' 
+                : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+            }`}
+            disabled={!product.inStock}
+          >
+            <ShoppingCart className="mr-2 h-4 w-4" />
+            {product.inStock ? 'Add to Cart' : 'Out of Stock'}
+          </Button>
+        </div>
       </CardFooter>
     </Card>
   );
 }
 
-function ProductsFilter() {
+async function ProductsFilter() {
+  const categories = await getCategories();
+  
   return (
     <div className="bg-white p-6 rounded-lg shadow-sm border">
       <h3 className="text-lg font-semibold mb-4">Filter Products</h3>
@@ -163,11 +138,11 @@ function ProductsFilter() {
           <label className="block text-sm font-medium text-gray-700 mb-2">Category</label>
           <select className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
             <option value="">All Categories</option>
-            <option value="ice-shelters">Ice Shelters</option>
-            <option value="electronics">Electronics</option>
-            <option value="rods-reels">Rods & Reels</option>
-            <option value="accessories">Accessories</option>
-            <option value="apparel">Apparel</option>
+            {categories.map((category: any) => (
+              <option key={category.id} value={category.slug}>
+                {category.name}
+              </option>
+            ))}
           </select>
         </div>
         
@@ -175,7 +150,8 @@ function ProductsFilter() {
           <label className="block text-sm font-medium text-gray-700 mb-2">Price Range</label>
           <select className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
             <option value="">Any Price</option>
-            <option value="0-50">$0 - $50</option>
+            <option value="0-25">$0 - $25</option>
+            <option value="25-50">$25 - $50</option>
             <option value="50-100">$50 - $100</option>
             <option value="100-200">$100 - $200</option>
             <option value="200-500">$200 - $500</option>
@@ -184,14 +160,11 @@ function ProductsFilter() {
         </div>
         
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Brand</label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Availability</label>
           <select className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-            <option value="">All Brands</option>
-            <option value="eskimo">Eskimo</option>
-            <option value="humminbird">Humminbird</option>
-            <option value="st-croix">St. Croix</option>
-            <option value="striker">Striker Ice</option>
-            <option value="vexilar">Vexilar</option>
+            <option value="">All Products</option>
+            <option value="in-stock">In Stock Only</option>
+            <option value="on-sale">On Sale</option>
           </select>
         </div>
         
@@ -204,90 +177,97 @@ function ProductsFilter() {
   );
 }
 
-export default function ProductsPage() {
-  return (
-    <>
-      <Navigation />
-      <main className="min-h-screen bg-gray-50">
-        {/* Header */}
-        <div className="bg-white border-b border-gray-200">
-          <div className="container mx-auto px-4 py-8">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-              <div>
-                <h1 className="text-3xl font-bold text-gray-900 mb-2">All Products</h1>
-                <p className="text-gray-600">Discover our complete collection of ice fishing gear</p>
-              </div>
-              
-              <div className="flex items-center gap-4">
-                <div className="relative">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
-                  <input
-                    type="text"
-                    placeholder="Search products..."
-                    className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-64"
-                  />
-                </div>
-                <select className="p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                  <option value="featured">Featured</option>
-                  <option value="price-low">Price: Low to High</option>
-                  <option value="price-high">Price: High to Low</option>
-                  <option value="rating">Customer Rating</option>
-                  <option value="newest">Newest First</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </div>
+async function ProductsGrid() {
+  const products = await getProducts();
+  
+  if (products.length === 0) {
+    return (
+      <div className="text-center py-12">
+        <h3 className="text-xl font-semibold text-gray-900 mb-2">No products found</h3>
+        <p className="text-gray-600">Check back later for new products.</p>
+      </div>
+    );
+  }
 
-        {/* Content */}
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {products.map((product) => (
+        <ProductCard key={product.id} product={product} />
+      ))}
+    </div>
+  );
+}
+
+export default async function ProductsPage() {
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <Navigation />
+      
+      {/* Header */}
+      <div className="bg-white shadow-sm">
         <div className="container mx-auto px-4 py-8">
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-            {/* Sidebar */}
-            <div className="lg:col-span-1">
-              <ProductsFilter />
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div>
+              <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
+                All Products
+              </h1>
+              <p className="text-gray-600 mt-2">
+                Discover our complete collection of ice fishing equipment
+              </p>
             </div>
             
-            {/* Products Grid */}
-            <div className="lg:col-span-3">
-              <div className="flex items-center justify-between mb-6">
-                <p className="text-gray-600">Showing {sampleProducts.length} of 480+ products</p>
-                <div className="flex items-center gap-2">
-                  <span className="text-sm text-gray-600">View:</span>
-                  <Button variant="outline" size="sm" className="bg-blue-600 text-white border-blue-600">Grid</Button>
-                  <Button variant="outline" size="sm">List</Button>
-                </div>
+            <div className="flex items-center gap-4">
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+                <input
+                  type="text"
+                  placeholder="Search products..."
+                  className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-64"
+                />
               </div>
               
-              <Suspense fallback={
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                  {[...Array(6)].map((_, i) => (
-                    <div key={i} className="bg-gray-200 animate-pulse rounded-lg h-96"></div>
-                  ))}
-                </div>
-              }>
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                  {sampleProducts.map((product) => (
-                    <ProductCard key={product.id} product={product} />
-                  ))}
-                </div>
-              </Suspense>
-              
-              {/* Pagination */}
-              <div className="flex justify-center mt-12">
-                <div className="flex items-center gap-2">
-                  <Button variant="outline" disabled>Previous</Button>
-                  <Button className="bg-blue-600 text-white">1</Button>
-                  <Button variant="outline">2</Button>
-                  <Button variant="outline">3</Button>
-                  <span className="px-3 py-2 text-gray-500">...</span>
-                  <Button variant="outline">12</Button>
-                  <Button variant="outline">Next</Button>
-                </div>
-              </div>
+              <select className="p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                <option value="newest">Newest First</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="name">Name A-Z</option>
+              </select>
             </div>
           </div>
         </div>
-      </main>
-    </>
+      </div>
+
+      {/* Main Content */}
+      <div className="container mx-auto px-4 py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          {/* Sidebar */}
+          <div className="lg:col-span-1">
+            <Suspense fallback={<div>Loading filters...</div>}>
+              <ProductsFilter />
+            </Suspense>
+          </div>
+          
+          {/* Products Grid */}
+          <div className="lg:col-span-3">
+            <Suspense fallback={
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {[...Array(6)].map((_, i) => (
+                  <div key={i} className="bg-white rounded-lg shadow-sm border animate-pulse">
+                    <div className="h-48 bg-gray-200 rounded-t-lg"></div>
+                    <div className="p-6">
+                      <div className="h-4 bg-gray-200 rounded mb-2"></div>
+                      <div className="h-6 bg-gray-200 rounded mb-4"></div>
+                      <div className="h-8 bg-gray-200 rounded"></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            }>
+              <ProductsGrid />
+            </Suspense>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 } 

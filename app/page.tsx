@@ -4,8 +4,9 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Star, Truck, Shield, Award, ArrowRight, Snowflake } from 'lucide-react';
+import { Star, Truck, Shield, Award, ArrowRight, Snowflake, ShoppingCart } from 'lucide-react';
 import Navigation from '@/components/Navigation';
+import { prisma } from '@/lib/database';
 
 // Hero Section Component
 function HeroSection() {
@@ -86,38 +87,60 @@ function HeroSection() {
   );
 }
 
+// Get featured categories from database
+async function getFeaturedCategories() {
+  try {
+    const categories = await prisma.productCategory.findMany({
+      where: {
+        productCount: {
+          gt: 0
+        }
+      },
+      orderBy: {
+        productCount: 'desc'
+      },
+      take: 4
+    });
+    return categories;
+  } catch (error) {
+    console.error('Error fetching categories:', error);
+    return [];
+  }
+}
+
+// Get featured products from database
+async function getFeaturedProducts() {
+  try {
+    const products = await prisma.product.findMany({
+      where: {
+        status: 'ACTIVE',
+        inStock: true
+      },
+      include: {
+        images: {
+          orderBy: { priority: 'asc' },
+          take: 1
+        },
+        categories: {
+          take: 1
+        }
+      },
+      orderBy: [
+        { salePrice: { sort: 'asc', nulls: 'last' } },
+        { createdAt: 'desc' }
+      ],
+      take: 8
+    });
+    return products;
+  } catch (error) {
+    console.error('Error fetching featured products:', error);
+    return [];
+  }
+}
+
 // Featured Categories Component
-function FeaturedCategories() {
-  const categories = [
-    {
-      name: 'Ice Shelters',
-      description: 'Stay warm and comfortable',
-      image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop',
-      href: '/categories/ice-shelters',
-      badge: 'Popular'
-    },
-    {
-      name: 'Electronics',
-      description: 'Fish finders & sonar technology',
-      image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=400&h=300&fit=crop',
-      href: '/categories/electronics',
-      badge: 'New Arrivals'
-    },
-    {
-      name: 'Rods & Reels',
-      description: 'Premium ice fishing gear',
-      image: 'https://images.unsplash.com/photo-1498654896293-37aacf113fd9?w=400&h=300&fit=crop',
-      href: '/categories/rods-reels',
-      badge: 'Best Sellers'
-    },
-    {
-      name: 'Accessories',
-      description: 'Complete your setup',
-      image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop',
-      href: '/categories/accessories',
-      badge: 'Essential'
-    },
-  ];
+async function FeaturedCategories() {
+  const categories = await getFeaturedCategories();
 
   return (
     <section className="py-20 bg-gray-50">
@@ -132,19 +155,19 @@ function FeaturedCategories() {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {categories.map((category) => (
+          {categories.map((category: any) => (
             <Card key={category.name} className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg">
               <CardHeader className="p-0">
                 <div className="relative h-48 overflow-hidden rounded-t-lg">
                   <Image
-                    src={category.image}
+                    src={category.imageUrl || 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop'}
                     alt={category.name}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                   />
                   <Badge className="absolute top-4 left-4 bg-orange-600 text-white">
-                    {category.badge}
+                    {category.productCount} Products
                   </Badge>
                 </div>
               </CardHeader>
@@ -153,11 +176,11 @@ function FeaturedCategories() {
                   {category.name}
                 </CardTitle>
                 <CardDescription className="text-gray-600">
-                  {category.description}
+                  {category.description || 'Discover our selection of quality products'}
                 </CardDescription>
               </CardContent>
               <CardFooter className="p-6 pt-0">
-                <Link href={category.href}>
+                <Link href={`/categories/${category.slug}`}>
                   <Button 
                     variant="outline" 
                     className="w-full group-hover:bg-orange-600 group-hover:text-white group-hover:border-orange-600 transition-colors duration-300"
@@ -174,13 +197,111 @@ function FeaturedCategories() {
   );
 }
 
+// Featured Products Component
+async function FeaturedProducts() {
+  const products = await getFeaturedProducts();
+  
+  if (products.length === 0) {
+    return null;
+  }
+
+  return (
+    <section className="py-20 bg-white">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            Featured Products
+          </h2>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Check out our most popular ice fishing gear, handpicked for quality and performance
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {products.map((product: any) => {
+            const primaryImage = product.images?.[0];
+            const primaryCategory = product.categories?.[0];
+            const isOnSale = product.salePrice && product.salePrice.lt(product.regularPrice);
+            const displayPrice = product.salePrice || product.regularPrice;
+            
+            return (
+              <Card key={product.id} className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg">
+                <CardHeader className="p-0">
+                  <div className="relative h-48 overflow-hidden rounded-t-lg">
+                    <Image
+                      src={primaryImage?.url || 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop'}
+                      alt={product.name}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                    />
+                    {isOnSale && (
+                      <Badge className="absolute top-4 left-4 bg-red-600 text-white">
+                        Sale
+                      </Badge>
+                    )}
+                  </div>
+                </CardHeader>
+                <CardContent className="p-6">
+                  <div className="mb-2">
+                    <span className="text-sm text-gray-500">{primaryCategory?.name || 'Product'}</span>
+                  </div>
+                  <CardTitle className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
+                    {product.name}
+                  </CardTitle>
+                  <div className="flex items-center gap-2 mb-4">
+                    <span className="text-2xl font-bold text-gray-900">
+                      ${displayPrice.toFixed(2)}
+                    </span>
+                    {isOnSale && (
+                      <span className="text-lg text-gray-500 line-through">
+                        ${product.regularPrice.toFixed(2)}
+                      </span>
+                    )}
+                  </div>
+                </CardContent>
+                <CardFooter className="p-6 pt-0">
+                  <div className="flex gap-2 w-full">
+                    <Link href={`/products/${product.slug}`} className="flex-1">
+                      <Button variant="outline" className="w-full">
+                        View Details
+                      </Button>
+                    </Link>
+                    <Button 
+                      className="flex-1 bg-orange-600 hover:bg-orange-700 text-white"
+                    >
+                      <ShoppingCart className="mr-2 h-4 w-4" />
+                      Add to Cart
+                    </Button>
+                  </div>
+                </CardFooter>
+              </Card>
+            );
+          })}
+        </div>
+        
+        <div className="text-center mt-12">
+          <Link href="/products">
+            <Button 
+              size="lg"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-semibold"
+            >
+              View All Products <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // Trust Section Component
 function TrustSection() {
   const stats = [
     { number: '15+', label: 'Years in Business', icon: Award },
-    { number: '480+', label: 'Products Available', icon: Star },
-    { number: '1000+', label: 'Happy Customers', icon: Shield },
-    { number: '99%', label: 'Customer Satisfaction', icon: Truck },
+    { number: '741', label: 'Products Available', icon: Star },
+    { number: '108', label: 'Categories', icon: Shield },
+    { number: '274', label: 'Products on Sale', icon: Truck },
   ];
 
   return (
@@ -246,10 +367,19 @@ export default function HomePage() {
         <Suspense fallback={
           <div className="py-20 text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600 mx-auto"></div>
-            <p className="mt-4 text-gray-600">Loading products...</p>
+            <p className="mt-4 text-gray-600">Loading categories...</p>
           </div>
         }>
           <FeaturedCategories />
+        </Suspense>
+        
+        <Suspense fallback={
+          <div className="py-20 text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+            <p className="mt-4 text-gray-600">Loading featured products...</p>
+          </div>
+        }>
+          <FeaturedProducts />
         </Suspense>
         
         <TrustSection />
